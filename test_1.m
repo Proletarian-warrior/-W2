@@ -156,7 +156,7 @@ fprintf('\n收敛分析:\n');
 fprintf('GD 到全局最小值距离: %.6f, 到局部最小值距离: %.6f\n', norm(gd_final-global_min), norm(gd_final-alt_min));
 fprintf('CG 到全局最小值距离: %.6f, 到局部最小值距离: %.6f\n', norm(cg_final-global_min), norm(cg_final-alt_min));
 
-%% 本地函数（在脚本末尾）
+%% 本地函数
 function [f, g] = freudenstein_roth(x)
     x1 = x(1); x2 = x(2);
     u = x1 - x2^3 + 5*x2^2 - 2*x2 - 13;
@@ -204,4 +204,5 @@ function [amin, xmin, fmin, internal_count] = exact_line_search(fun, x, d)
     [amin, fmin, ~, output] = fminbnd(phi, lb, ub);
     xmin = x + amin * d;
     if isfield(output,'funcCount'), internal_count = output.funcCount; else internal_count = NaN; end
+
 end
